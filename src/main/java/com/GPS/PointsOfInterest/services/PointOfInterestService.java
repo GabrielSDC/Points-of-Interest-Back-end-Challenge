@@ -20,4 +20,12 @@ public class PointOfInterestService {
         List<PointOfInterest> result = pointOfInterestRepository.findAll();
         return result.stream().map(x -> new PointOfInterestDTO(x)).toList();
     }
+    
+    @Transactional
+    public void addPointOfInterest(PointOfInterestDTO body) {
+        PointOfInterest entity = new PointOfInterest(body.getName(), 
+                                                     body.getX(), 
+                                                     body.getY());
+        pointOfInterestRepository.save(entity);
+    }
 }

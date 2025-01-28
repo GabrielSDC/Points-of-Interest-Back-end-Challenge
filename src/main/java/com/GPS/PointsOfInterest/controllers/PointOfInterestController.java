@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.GPS.PointsOfInterest.dto.PointOfInterestDTO;
 import com.GPS.PointsOfInterest.services.PointOfInterestService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping(value = "pois")
@@ -22,4 +24,8 @@ public class PointOfInterestController {
         return ResponseEntity.ok().body(pointOfInterestService.getAll());
     }
     
+    @PostMapping
+    public void addPointOfInterest(@RequestBody PointOfInterestDTO entity) {
+        pointOfInterestService.addPointOfInterest(entity);
+    }
 }
