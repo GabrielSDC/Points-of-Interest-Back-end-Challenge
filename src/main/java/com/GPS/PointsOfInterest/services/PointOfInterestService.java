@@ -28,4 +28,9 @@ public class PointOfInterestService {
                                                      body.getY());
         pointOfInterestRepository.save(entity);
     }
+
+    @Transactional
+    public void removePointOfInterest(PointOfInterestDTO body) {
+        pointOfInterestRepository.deleteByName(body.getName());
+    }
 }

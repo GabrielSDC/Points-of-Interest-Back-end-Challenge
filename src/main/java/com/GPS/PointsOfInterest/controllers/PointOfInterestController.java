@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.GPS.PointsOfInterest.dto.PointOfInterestDTO;
 import com.GPS.PointsOfInterest.services.PointOfInterestService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,5 +29,10 @@ public class PointOfInterestController {
     @PostMapping
     public void addPointOfInterest(@RequestBody PointOfInterestDTO entity) {
         pointOfInterestService.addPointOfInterest(entity);
+    }
+    
+    @DeleteMapping
+    public void removePointOfInterest(@RequestBody PointOfInterestDTO entity) {
+        pointOfInterestService.removePointOfInterest(entity);
     }
 }
