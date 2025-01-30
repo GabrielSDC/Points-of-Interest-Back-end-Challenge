@@ -2,29 +2,8 @@ package com.GPS.PointsOfInterest.dto;
 
 import com.GPS.PointsOfInterest.entity.PointOfInterest;
 
-public class PointOfInterestDTO {
-    private String name;
-    private Integer x;
-    private Integer y;
-    
-    public PointOfInterestDTO() {
-    }
-    
+public record PointOfInterestDTO(String name, Integer x, Integer y) {
     public PointOfInterestDTO(PointOfInterest entity) {
-        name = entity.getName();
-        x = entity.getX();
-        y = entity.getY();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getX() {
-        return x;
-    }
-
-    public Integer getY() {
-        return y;
+        this(entity.getName(), entity.getX(), entity.getY());
     }
 }
