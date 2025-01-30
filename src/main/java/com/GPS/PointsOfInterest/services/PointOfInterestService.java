@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.GPS.PointsOfInterest.dto.PointOfInterestDTO;
 import com.GPS.PointsOfInterest.entity.PointOfInterest;
+import com.GPS.PointsOfInterest.projections.PointOfInterestProjection;
 import com.GPS.PointsOfInterest.repositories.PointOfInterestRepository;
 
 @Service
@@ -31,6 +32,9 @@ public class PointOfInterestService {
 
     @Transactional
     public void removePointOfInterest(PointOfInterestDTO body) {
-        pointOfInterestRepository.deleteByName(body.getName());
+        PointOfInterestProjection projection = pointOfInterestRepository.getPointOfInterestByName(body.getName());
+        
+        if(projection != null)
+            pointOfInterestRepository.deleteById(projection.getId());
     }
 }
